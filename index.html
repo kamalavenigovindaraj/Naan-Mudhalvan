@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Collection System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Feedback Collection System</h1>
+      <p class="subtitle">Share your experience to help us improve</p>
+    </header>
+
+    <div class="card">
+      <form id="feedbackForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name (optional)">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com (optional)">
+        </div>
+
+        <div class="form-group">
+          <label for="rating" class="required">Rating</label>
+          <div class="rating-container" id="ratingContainer">
+            <div class="rating-option" data-value="1">
+              <i class="fas fa-frown"></i>
+              <span>1 - Very Bad</span>
+            </div>
+            <div class="rating-option" data-value="2">
+              <i class="fas fa-meh"></i>
+              <span>2 - Bad</span>
+            </div>
+            <div class="rating-option" data-value="3">
+              <i class="fas fa-smile"></i>
+              <span>3 - Okay</span>
+            </div>
+            <div class="rating-option" data-value="4">
+              <i class="fas fa-laugh"></i>
+              <span>4 - Good</span>
+            </div>
+            <div class="rating-option" data-value="5">
+              <i class="fas fa-grin-stars"></i>
+              <span>5 - Excellent</span>
+            </div>
+          </div>
+          <input type="hidden" id="rating" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message" class="required">Your Feedback</label>
+          <textarea id="message" rows="5" placeholder="Please share your detailed feedback..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          <i class="fas fa-paper-plane"></i> Submit Feedback
+        </button>
+      </form>
+
+      <div id="msg" class="message"></div>
+    </div>
+
+    <div class="admin-section" id="adminSection">
+      <div class="card">
+        <div class="admin-header">
+          <h2>Admin Dashboard</h2>
+          <div>
+            <button id="toggleAdmin" class="btn-secondary">
+              <i class="fas fa-times"></i> Close Panel
+            </button>
+          </div>
+        </div>
+
+        <div class="stats" id="statsContainer">
+          <!-- Stats will be populated by JavaScript -->
+        </div>
+
+        <div class="table-container">
+          <table id="feedbackTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Rating</th>
+                <th>Message</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div id="emptyState" class="empty-state">
+            <i class="fas fa-inbox"></i>
+            <h3>No feedback yet</h3>
+            <p>Submitted feedback will appear here</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="exportCSV" class="btn-success">
+            <i class="fas fa-file-csv"></i> Export CSV
+          </button>
+          <button id="clearData" class="btn-danger">
+            <i class="fas fa-trash"></i> Clear All Data
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="openAdmin" class="btn-secondary">
+        <i class="fas fa-cog"></i> Open Admin Panel
+      </button>
+    </div>
+
+    <footer>
+      <p>Feedback Collection System &copy; <span id="currentYear"></span> | All Rights Reserved</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
